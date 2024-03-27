@@ -1,4 +1,3 @@
-
 public class OrderedQueue {
 
 	private Queue<NumCount> q;
@@ -16,6 +15,14 @@ public class OrderedQueue {
 	}
 	
 	public void removeNum(int x) {
-		
+		boolean flag = false;
+		while (q.head() != null) {
+			if (!flag && q.head().getNum() == x) {
+				q.remove();
+				flag = true;
+			}
+			q.insert(q.remove());
+		}
+		q.remove();
 	}
 }
